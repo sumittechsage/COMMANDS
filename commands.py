@@ -25,7 +25,6 @@ COMMAND :- git config --list
 COMMAND :- git clone clone_url
 $ cd(change dir) TO THE CLONED REPO.
 
-@
 '''
 
 # STATUS:
@@ -47,4 +46,16 @@ $ cd(change dir) TO THE CLONED REPO.
     
 @ HOW TO CHECK GIT STATUS FOR CURRENT REPO ?
 COMMAND :- git status
+'''
+
+
+# ADD & COMMIT:-
+'''
+@ How to add a file to the staging files ?
+COMMAND :- git add file name
+$ e.g :- git add requirements.txt
+
+@ HOW TO COMMIT CHANGES :-
+COMMAND :- git status
+
 '''
