@@ -65,6 +65,11 @@ COMMAND :- git add .
 @ HOW TO COMMIT CHANGES? :-
 COMMAND :- git commit -m "message"
 
+# EVERY COMMIT HAS A UNIQUE ID KNOWN AS COMMIT HASH.
+
+@HOW TO VIEW COMMITS INFORMATION?
+COMMAND :- git log
+
 '''
 
 # PUSH Command
@@ -94,9 +99,7 @@ COMMANDS :-
 '''
 
 # BRANCHEs
-
 '''
-
 # HOW TO CREATE A NEW BRANCH ?
 COMMAND :- git checkout -b branch_name
 
@@ -106,4 +109,17 @@ COMMAND :- git checkout branch_name
 
 # HOW TO DELETE ANY BRACH EXCEPT FOR THE CURRENT BRANCH ?
 COMMAND :- git branch -d branch_name
+'''
+
+# UNDO CHANGES
+'''
+# UNDO STAGED CHANGES
+COMMAND :- git reset filename
+COMMNAD :- git reset .
+
+
+# UNDO COMMITED CHANGES
+COMMAND :- git reset HEAD~1
+COMMAND :- git reset commit_hash   (changes will be removed from git but remain in system/vscode and will need to stage and commit them again.)
+COMMAND :- git reset --hard commit_hash   (changes after the hash_commit will be removed from the system too.)
 '''
