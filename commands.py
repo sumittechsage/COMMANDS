@@ -23,6 +23,10 @@ COMMAND :- git config --list
 
 @ CLONE A REPO THROUGH GITHUB URL ON OUR LOCAL MACHINE/SYSTEM/PC
 COMMAND :- git clone clone_url
+>> By this command "origin" will be set as the name of remote repo from which we are cloning will be set as origin on our local machine or system.
+
+COMMAND :- git clone -o gamer clone_url
+>> By this command "gamer" is the name for remote repo on our local machine or system.
 $ cd(change dir) TO THE CLONED REPO.
 
 '''
@@ -68,5 +72,9 @@ COMMAND :- git commit -m "message"
 # PUSH :- upload local repo latest commit to remote repo.
 
 @ HOW TO PUSH A COMMIT TO REMOTE REPO FROM LOCAL REPO.
+$ COMMAND MEANING :- git push original_repo_name(remote repo name) branch_name_in_which_we_want_to_push_cahnges
 COMMAND :- git push origin main
+
+!! NOTE !!
+>> origin is the default name given to the remote repo from which we cloned.
 '''
