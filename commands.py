@@ -51,11 +51,22 @@ COMMAND :- git status
 
 # ADD & COMMIT:-
 '''
-@ How to add a file to the staging files ?
+@ How to add a single file to the staging files ?
 COMMAND :- git add file name
 $ e.g :- git add requirements.txt
 
-@ HOW TO COMMIT CHANGES :-
-COMMAND :- git status
+@ HOW TO ADD ALL THE CHANGED FILE IN STAGING AREA ?
+COMMAND :- git add .
 
+@ HOW TO COMMIT CHANGES? :-
+COMMAND :- git commit -m "message"
+
+'''
+
+# PUSH Command
+'''
+# PUSH :- upload local repo latest commit to remote repo.
+
+@ HOW TO PUSH A COMMIT TO REMOTE REPO FROM LOCAL REPO.
+COMMAND :- git push origin main
 '''
