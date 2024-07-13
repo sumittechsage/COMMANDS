@@ -123,3 +123,18 @@ COMMAND :- git reset HEAD~1
 COMMAND :- git reset commit_hash   (changes will be removed from git but remain in system/vscode and will need to stage and commit them again.)
 COMMAND :- git reset --hard commit_hash   (changes after the hash_commit will be removed from the system too.)
 '''
+
+
+# MERGE AND PULL CODE
+'''
+# HOW TO MERGE CHANGES FROM ANOTHER BRANCH TO THE CURRENT BRANCH?
+
+# STEP 1: FIRST SEE THE DIFFERNCE BETWEEN TWO BRANCHES.
+COMMAND: git diff branch_to_merge
+
+# STEP 2: MERGE
+COMMAND: git merge branch_name
+
+# HOW TO PULL(FETCH AND MERGE) CHANGES FROM REMOTE?
+COMMAND: git pull origin main
+'''
