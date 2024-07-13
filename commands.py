@@ -74,7 +74,36 @@ COMMAND :- git commit -m "message"
 @ HOW TO PUSH A COMMIT TO REMOTE REPO FROM LOCAL REPO.
 $ COMMAND MEANING :- git push original_repo_name(remote repo name) branch_name_in_which_we_want_to_push_cahnges
 COMMAND :- git push origin main
+COMMAND :- git push -u origin main      (by using this command we have set or main branch as upstream. From now on if we make {git push} it will directly push out code to main with using origin main.)
 
 !! NOTE !!
 >> origin is the default name given to the remote repo from which we cloned.
+'''
+
+# INIT COMMAND
+'''
+# INIT :- COMMAND IS USED TO CREATE A NEW GIT REPO FROM OUR SYSTEM/LOCAL MACHINE.
+
+COMMANDS :- 
+1. git init                         (initialize current folder as git folder)
+2. git remote add origin link       (to add the remote repo into our existing project)
+3. git remote -v                    (to verify remote repo name and url)
+4. git branch                       (current git branch)
+5. git branch -M main               (rename a branch)
+6. git push origin branch           (push command)
+'''
+
+# BRANCHEs
+
+'''
+
+# HOW TO CREATE A NEW BRANCH ?
+COMMAND :- git checkout -b branch_name
+
+
+# HOW TO CHANGE THE CURRENT BRANCH ON OUR SYSTEM ?
+COMMAND :- git checkout branch_name
+
+# HOW TO DELETE ANY BRACH EXCEPT FOR THE CURRENT BRANCH ?
+COMMAND :- git branch -d branch_name
 '''
