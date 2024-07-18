@@ -1,3 +1,14 @@
+# GIT CLI :-
+'''
+1. LOGIN USING WEB BROWSER GIT HUB CREDENTIALS.
+2. SSH KEY
+3. TOKEN 
+
+# LOGIN 
+COMMAND :- gh auth login
+'''
+
+
 # Global Account Config :-
 
 '''
