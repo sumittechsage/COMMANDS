@@ -149,3 +149,9 @@ COMMAND: git merge branch_name
 # HOW TO PULL(FETCH AND MERGE) CHANGES FROM REMOTE?
 COMMAND: git pull origin main
 '''
+
+# ADD NEW REMOTE URL/ CHANGED/ RENAMED REPO ON REMOTE
+'''
+# HOW TO SET UPDATED REMOTE ULL TO CURRENT REPO
+COMMAND :- git remote set-url origin new-url
+'''
