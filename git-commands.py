@@ -133,6 +133,13 @@ COMMNAD :- git reset .
 COMMAND :- git reset HEAD~1
 COMMAND :- git reset commit_hash   (changes will be removed from git but remain in system/vscode and will need to stage and commit them again.)
 COMMAND :- git reset --hard commit_hash   (changes after the hash_commit will be removed from the system too.)
+
+
+# UNDO CHANGES IN A UNSTAGED BUT TRACKED FILE
+COMMAND :- git checkout -- file_path
+
+# UNDO CHANGES IN MULTIPLE UNSTAGED BUT TRACKED FILES
+COMMAND :- git checkout -- file1.txt file2.txt file3.txt
 '''
 
 
