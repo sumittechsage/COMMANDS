@@ -70,6 +70,7 @@
 '''
 13. copy FILES/CHANGES FROM REPO ON LOCAL INTO REPO ON DOCKER CONTAINER
     $ command :- docker cp /path/on/host/file <container_name_or_id>:/path/to/container
+    e.g:- docekr cp . name:/working_dir
 '''
 
 '''
