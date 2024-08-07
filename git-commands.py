@@ -109,30 +109,105 @@ COMMANDS :-
 6. git push origin branch           (push command)
 '''
 
+
+# HEAD 
+'''
+# HEAD IS THE MOST IMPORTANT POINTER BUT COVERED BECAUSE OF ABSTRACTION.
+# HEAD INITALLY POINTS TO THE POINTER POINTING DEFAULT BRANCH  (HEAD(ptr) -> MAIN(ptr))
+# WHATEVER WE DO, CREATING NEW COMMIT, CREATING NEW BRACH, SWITCHING BRANCH OR ANY OTHER OPERATION MOSTLY ALL THESE OPERATIONS REQURIES HEAD TO POINT THEM FIRST.
+
+# HOW TO DEATTACH HEAD ? (MEANS CURRENTLY HEAD IS POINTING TO A BRACH POINTER, IF MAKE OUR HEAD TO POINT TO THE COMMIT WHERE THE BRANCH POINTER IS POINTING OR ANY OTHER COMMIT IT MEANS WE DEATTACHED THE HEAD FROM BRANCH AND NOW WHATEVER OPERATIONS WILL WE MAKE OUR BRANCH WILL NOT FOLLOW INSTEAD THEY WILL BE ON HEAD.)
+COMMAND :- git checkout commit_hash
+'''
+
+
 # BRANCHEs
 '''
-# HOW TO CREATE A NEW BRANCH ?
-COMMAND :- git checkout -b branch_name
+=> A BRANCH IS JUST A POINTER POINITING TO A COMMIT. 
 
-
-# HOW TO CHANGE THE CURRENT BRANCH ON OUR SYSTEM ?
-COMMAND :- git checkout branch_name
+# TO CREATE A NEW BRANCH ?
+COMMAND :- git branch branch_name
 
 # HOW TO DELETE ANY BRACH EXCEPT FOR THE CURRENT BRANCH ?
 COMMAND :- git branch -d branch_name
+
+----------------------------- CHECKOUT OPERATIONS WORKS ON DEATTACHING AND ATTACHING THE HEAD -------------------------
+
+# HOW TO CHANGE THE HEAD POINTER TO ANOTHER BRANCH FROM CURRENT BRANCH ON OUR SYSTEM ?
+# COMMAND :- git checkout branch_name
+
+# HOW TO CREATE A NEW BRANCH FROM THE COMMIT POINTED BY THE HEAD AND CHECKOUT TO THE CURRENTLY CREATED BRANCH?
+COMMAND :- git checkout -b branch_name
+
+'''
+
+
+# MERGE AND PULL CODE
+'''
+=> MERGE US TO CREATE A COMMIT WHICH WILL HAVE TWO UNIQUE COMMITS AS ITS PARENTS.
+
+# HOW TO MERGE CHANGES FROM ANOTHER BRANCH TO THE CURRENT BRANCH?
+
+# STEP 1: FIRST SEE THE DIFFERNCE BETWEEN TWO BRANCHES.
+COMMAND: git diff branch_to_merge
+
+# STEP 2: MERGE A BRANCH INTO THE CURRENT CHECKOUT BRANCH 
+COMMAND: git merge branch_name
+
+# HOW TO PULL(FETCH AND MERGE) CHANGES FROM REMOTE?
+COMMAND: git pull origin main
+'''
+
+# GIT REBASE
+'''
+=> The second way of combining work between branches is rebasing. Rebasing essentially takes a set of commits, "copies" them, and plops them down somewhere else.
+
+# HOW TO REBASE(MOVE OUR CURRENT BRANCH/COMMIT'S(HEAD'S) WORK ONTO ANOTHER BRANCH/COMMIT(HEAD'S)) ?
+COMMAND: git rebase commit_address
+
+'''
+
+# MOVE HEAD AND BRANCH POINTER
+'''
+# MOVING HEAD (changes are there we are just making our head points to the previous commit) BY MOVING YOUR POINTER TO THE PRECIOUS COMMIT
+# SITUATION :- If we want to go to the one commit back in our MAIN branch.
+
+# HOW COMMAND TAKES ARGS HERE :- after the keyword checkout the arg should be the commit where we want our head to point. here it is main^ means the commit previous to the commit pointed by main branch.
+COMMAND :- git checkout main^     :- IT WILL MOVE OUR HEAD POINTER TO  THE ONE COMMIT BACK FROM THE COMMIT POINTED BY OUR MAIN POINTER. 
+
+
+# MOVING BRANCH POINTER
+# MOVING BRANCH POINTER (changes are there just our branch pointer is pointing to another/previous commit)
+
+# here main is the branch pointer which want to move and followed by commit which we want to point which is HEAD~3(commit which is 3 commits behind the commit pointed by HEAD)
+COMMAND :- git branch -f main HEAD~3
 '''
 
 # UNDO CHANGES
 '''
+1. BY RESET :-  RESET WORKS GREAT FOR THE LOCAL MACHINE BUT ON REMOTE REPO USED BY OTHER IT WON'T AFFECT
+    # MODES OF RESETTING  
+         --soft: Moves the branch pointer to the specified commit but leaves the index and working directory unchanged.
+        --mixed (default): Moves the branch pointer to the specified commit and resets the index, but leaves the working directory unchanged. This means changes between the specified commit and the current HEAD will be unstaged.
+       --hard: Moves the branch pointer to the specified commit and resets both the index and working directory to match the specified commit. All changes in the working directory are discarded.
+
+    # ONE CAN FORCE CHANGES ONTO REMOTE MADE BY RESET BY FORCE PUSHING, BUT THIS SHOULD BE DONE WITH CAUTION AS THE OTHER COLLOBORATERS MIGHT BE AFFECTED AND THE CHANGES WILL BE LOST FOREVER.  
+       
+
+2. BY REVERT :- RESET CHANGES AND SHARE THOSE CHANGES WITH OTHERS
+
 # UNDO STAGED CHANGES
 COMMAND :- git reset filename
 COMMNAD :- git reset .
 
 
-# UNDO COMMITED CHANGES
+# UNDO COMMITED CHANGES BY RESETTING
 COMMAND :- git reset HEAD~1
 COMMAND :- git reset commit_hash   (changes will be removed from git but remain in system/vscode and will need to stage and commit them again.)
 COMMAND :- git reset --hard commit_hash   (changes after the hash_commit will be removed from the system too.)
+
+# UNDO CHANGES AND SHARE WITH OTHER MAKE A NEW COMMIT FROM THE COMMIT WE WANT TO MOVE AND ADD IT AHEAD OF THE COMMIT WE WANT TO REMOVE. KEEPS THE RECORD.
+COMMAND :- git revert commit   
 
 
 # UNDO CHANGES IN A UNSTAGED BUT TRACKED FILE
@@ -142,20 +217,17 @@ COMMAND :- git checkout -- file_path
 COMMAND :- git checkout -- file1.txt file2.txt file3.txt
 '''
 
-
-# MERGE AND PULL CODE
+# CHERRY PICK
 '''
-# HOW TO MERGE CHANGES FROM ANOTHER BRANCH TO THE CURRENT BRANCH?
+# It's a very straightforward way of saying that you would like to copy a series of commits below your current location (HEAD)
+SYNTAX :- git cherry-pick <Commit1> <Commit2> <...>
 
-# STEP 1: FIRST SEE THE DIFFERNCE BETWEEN TWO BRANCHES.
-COMMAND: git diff branch_to_merge
 
-# STEP 2: MERGE
-COMMAND: git merge branch_name
-
-# HOW TO PULL(FETCH AND MERGE) CHANGES FROM REMOTE?
-COMMAND: git pull origin main
+# INTERACTIVE REBASE
+=> When you hit the REABSE COMMAND with -i, an interactive rebase window will appear. Reorder some commits around see the result!
+COMMAND :- git rebase -i HEAD~4
 '''
+
 
 # ADD NEW REMOTE URL/ CHANGED/ RENAMED REPO ON REMOTE
 '''
