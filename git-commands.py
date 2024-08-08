@@ -25,22 +25,55 @@ COMMAND :- git config --list
 '''
 
 
-# CLONE:
+# CLONE
+'''
+# CLONING IS JUST MAKING A COPY OF THE REPO. WE FIRST MAKE A REPO ON INTERNET(GITHUB) SO THAT OUR DATA WILL BE SAFE WHEN OUR LOCAL DATA CAN BE DELETED EAISLY. NOW, WHENEVER WE NEED THAT REPO TO WORK ON ANY SYSTEM OR BY ANY TEAM MEMBERS THEY CAN SIMPLY DOWNLOAD A COPY BY CLONING THE REPO. 
+COMMAND:-  git clone remote_repo_url
+
+# CLONING A REPO WILL SET THE COPY OF REPO ON YOUR SYSTEM WITH SOME ADDITIONAL SETTINGS :-
+1. THE NAME OF REMOTE REPO TO "origin" FROM WHICH WE CLONED OR MADE THE COPY. WE CAN CHANGE THE NAME ANYTIME  
+        -- when cloning a repo we can explicitly specifies the name of remote repo like this :- git clone -o anyname clone_url
+        -- TO CHECK THE REMOTE NAME :- git remote -v
+        -- To change the name after cloning :- git remote rename old_name new_name
+
+2. ALL THE BRANCHES THAT ON REMOTE (WE WILL SEE WHAT IS A BRANCH IN NEXT STEP).
+
+3. ALL THE BRANCHES DUPLICATES TO TRACK REMOTE CHANGES(THEY ARE NAMED AS REMOTE_NAME/BRANCH) e.g :- origin/main, origin/test etc.
+'''
+
+
+
+# BRANCHEs
+'''
+=> A BRANCH IS JUST A POINTER POINITING TO A COMMIT. 
+
+# TO CREATE A NEW BRANCH ?
+COMMAND :- git branch branch_name
+
+# HOW TO DELETE ANY BRACH EXCEPT FOR THE CURRENT BRANCH ?
+COMMAND :- git branch -d branch_name
+
+----------------------------- CHECKOUT OPERATIONS WORKS ON DEATTACHING AND ATTACHING THE HEAD -------------------------
+
+# HOW TO CHANGE THE HEAD POINTER TO ANOTHER BRANCH FROM CURRENT BRANCH ON OUR SYSTEM ?
+# COMMAND :- git checkout branch_name
+
+# HOW TO CREATE A NEW BRANCH FROM THE COMMIT POINTED BY THE HEAD AND CHECKOUT TO THE CURRENTLY CREATED BRANCH?
+COMMAND :- git checkout -b branch_name
 
 '''
-# local :- Repos/folder on our system/pc
-# remote :- Repos on  remote/github
 
 
-@ CLONE A REPO THROUGH GITHUB URL ON OUR LOCAL MACHINE/SYSTEM/PC
-COMMAND :- git clone clone_url
->> By this command "origin" will be set as the name of remote repo from which we are cloning will be set as origin on our local machine or system.
-
-COMMAND :- git clone -o gamer clone_url
->> By this command "gamer" is the name for remote repo on our local machine or system.
-$ cd(change dir) TO THE CLONED REPO.
-
+# HEAD 
 '''
+# HEAD IS THE MOST IMPORTANT POINTER BUT COVERED BECAUSE OF ABSTRACTION.
+# HEAD INITALLY POINTS TO THE POINTER POINTING DEFAULT BRANCH  (HEAD(ptr) -> MAIN(ptr))
+# WHATEVER WE DO, CREATING NEW COMMIT, CREATING NEW BRACH, SWITCHING BRANCH OR ANY OTHER OPERATION MOSTLY ALL THESE OPERATIONS REQURIES HEAD TO POINT THEM FIRST.
+
+# HOW TO DEATTACH HEAD ? (MEANS CURRENTLY HEAD IS POINTING TO A BRACH POINTER, IF MAKE OUR HEAD TO POINT TO THE COMMIT WHERE THE BRANCH POINTER IS POINTING OR ANY OTHER COMMIT IT MEANS WE DEATTACHED THE HEAD FROM BRANCH AND NOW WHATEVER OPERATIONS WILL WE MAKE OUR BRANCH WILL NOT FOLLOW INSTEAD THEY WILL BE ON HEAD.)
+COMMAND :- git checkout commit_hash
+'''
+
 
 # STATUS:
 
@@ -92,55 +125,17 @@ $ COMMAND MEANING :- git push original_repo_name(remote repo name) branch_name_i
 COMMAND :- git push origin main
 COMMAND :- git push -u origin main      (by using this command we have set or main branch as upstream. From now on if we make {git push} it will directly push out code to main with using origin main.)
 
+=> HERE THE main in git push origin main does'nt only specifies which branch we want to push but it also specifies in which branch on remote we to push our main branch and that will be defined by which remote branch is used to track the main branch genereally its origin/main
+=> YOU CAN ALSO PUSH TO ANOTHER BRANCH ON REMOTE FROM A DIFFERENT BRANCH ON LOCAL. HOW ?
+COMMAND :- git push origin source:destination
+            --> HERE source is reference location on our local to push(it can be a commit or branch or head anything) 
+            --> HERE destination is branch location on our remote to push
+            e.g if we want to push our test branch commits onto main branch of remote assuming origin  in our remote repo name.
+            git push origin test:main 
+
 !! NOTE !!
 >> origin is the default name given to the remote repo from which we cloned.
 '''
-
-# INIT COMMAND
-'''
-# INIT :- COMMAND IS USED TO CREATE A NEW GIT REPO FROM OUR SYSTEM/LOCAL MACHINE.
-
-COMMANDS :- 
-1. git init                         (initialize current folder as git folder)
-2. git remote add origin link       (to add the remote repo into our existing project)
-3. git remote -v                    (to verify remote repo name and url)
-4. git branch                       (current git branch)
-5. git branch -M main               (rename a branch)
-6. git push origin branch           (push command)
-'''
-
-
-# HEAD 
-'''
-# HEAD IS THE MOST IMPORTANT POINTER BUT COVERED BECAUSE OF ABSTRACTION.
-# HEAD INITALLY POINTS TO THE POINTER POINTING DEFAULT BRANCH  (HEAD(ptr) -> MAIN(ptr))
-# WHATEVER WE DO, CREATING NEW COMMIT, CREATING NEW BRACH, SWITCHING BRANCH OR ANY OTHER OPERATION MOSTLY ALL THESE OPERATIONS REQURIES HEAD TO POINT THEM FIRST.
-
-# HOW TO DEATTACH HEAD ? (MEANS CURRENTLY HEAD IS POINTING TO A BRACH POINTER, IF MAKE OUR HEAD TO POINT TO THE COMMIT WHERE THE BRANCH POINTER IS POINTING OR ANY OTHER COMMIT IT MEANS WE DEATTACHED THE HEAD FROM BRANCH AND NOW WHATEVER OPERATIONS WILL WE MAKE OUR BRANCH WILL NOT FOLLOW INSTEAD THEY WILL BE ON HEAD.)
-COMMAND :- git checkout commit_hash
-'''
-
-
-# BRANCHEs
-'''
-=> A BRANCH IS JUST A POINTER POINITING TO A COMMIT. 
-
-# TO CREATE A NEW BRANCH ?
-COMMAND :- git branch branch_name
-
-# HOW TO DELETE ANY BRACH EXCEPT FOR THE CURRENT BRANCH ?
-COMMAND :- git branch -d branch_name
-
------------------------------ CHECKOUT OPERATIONS WORKS ON DEATTACHING AND ATTACHING THE HEAD -------------------------
-
-# HOW TO CHANGE THE HEAD POINTER TO ANOTHER BRANCH FROM CURRENT BRANCH ON OUR SYSTEM ?
-# COMMAND :- git checkout branch_name
-
-# HOW TO CREATE A NEW BRANCH FROM THE COMMIT POINTED BY THE HEAD AND CHECKOUT TO THE CURRENTLY CREATED BRANCH?
-COMMAND :- git checkout -b branch_name
-
-'''
-
 
 # MERGE AND PULL CODE
 '''
@@ -156,6 +151,7 @@ COMMAND: git merge branch_name
 
 # HOW TO PULL(FETCH AND MERGE) CHANGES FROM REMOTE?
 COMMAND: git pull origin main
+COMMAND: git pull
 '''
 
 # GIT REBASE
@@ -233,4 +229,19 @@ COMMAND :- git rebase -i HEAD~4
 '''
 # HOW TO SET UPDATED REMOTE URL TO CURRENT REPO
 COMMAND :- git remote set-url origin new-url
+'''
+
+
+
+# INIT COMMAND
+'''
+# INIT :- COMMAND IS USED TO CREATE A NEW GIT REPO FROM OUR SYSTEM/LOCAL MACHINE.
+
+COMMANDS :- 
+1. git init                         (initialize current folder as git folder)
+2. git remote add origin link       (to add the remote repo into our existing project)
+3. git remote -v                    (to verify remote repo name and url)
+4. git branch                       (current git branch)
+5. git branch -M main               (rename a branch)
+6. git push origin branch           (push command)
 '''
