@@ -63,7 +63,6 @@ COMMAND :- git checkout -b branch_name
 
 '''
 
-
 # HEAD 
 '''
 # HEAD IS THE MOST IMPORTANT POINTER BUT COVERED BECAUSE OF ABSTRACTION.
@@ -74,6 +73,68 @@ COMMAND :- git checkout -b branch_name
 COMMAND :- git checkout commit_hash
 '''
 
+# REMOTE BRANCHES
+'''
+# Branches that are used to track changes on remote for our local branches.
+# e.g :- orign/main, origin/fixes etc. by default they start with remote name and than / and than our branch name
+# THAT IS THE REASON WE USALLY SEE THIS WHEN CLONING : local branch "main" set to track remote branch "o/main"
+# As remote branches are only meant to track changes on remote they cannot be pointed by HEAD and we cannot checkout to any remote branch that means we can not change the code in the remote branch instead we have to push the code onto remote and they will track those changes.
+# so, git checkout origin/main will move our HEAD to the commit pointed by our origin/main branch not to the origin/main  pointer itself.
+# It's not necessary that a branch origin/main should track the changes for main branch instead we can rename our create any branch and set its tracking branch however we want.
+        A) git checkout -b newbranch origin/main  :- it will create a new branch and set origin/main as the tracking branch for it.
+        B) git branch -u origin/main exsistingbranch :- it will set the origin/main  to track the existing branch.
+        C) git branch -u origin/main  :- here the origin/main will be set to track the current branch pointed by the HEAD.
+'''
+
+# FETCH
+'''
+# FETCHING IS SIMPLY DOWNLOADING THE CODE/ NEW CODE/ NEW COMMITS FORM THE REMOTE REPO INTO OUR REMOTE BRANCHES.
+# THE NEW COMMITS ON MAIN WILL BE ADDED TO origin/main or whatever remote branch is set for tracking main.
+# IT DOES NOT CHANGE, OR MERGE OUR CODE INTO OUR LOCAL BRANCHES. IT JUST DOWNLAOD THE CHANGES INTO REMOTE BRANCHES.
+# COMMAND :- git fetch                      # all the changes FROM every branch
+# COMMAND :- git fetch origin main          # changes FROM main branch only
+'''
+
+# MERGE
+'''
+=> MERGE IS  ADDING THE FETCHED CODE FROM REMOTE BRANCES TO THEIR RESPECTIVE LOCAL BRANCHES WHICH THEY ARE TRACKING.
+
+# HOW TO MERGE CHANGES FROM ANOTHER BRANCH TO THE CURRENT BRANCH?
+
+# STEP 1: FIRST SEE THE DIFFERNCE BETWEEN TWO BRANCHES.
+COMMAND: git diff branch_to_merge
+
+# STEP 2: MERGE A BRANCH INTO THE CURRENT CHECKOUT BRANCH or COMMIT 
+COMMAND: git merge branch_name
+
+# IF we have fetched some changes from the remote than we will do
+COMMAND: git fetch origin/mian; git checkout main; git merge origin/main;
+'''
+
+
+# GIT REBASE
+'''
+=> The second way of combining work between branches is rebasing. Rebasing essentially takes a set of commits, "copies" them, and plops them down somewhere else.
+
+# HOW TO REBASE(MOVE OUR CURRENT BRANCH/COMMIT'S(HEAD'S) WORK ONTO ANOTHER BRANCH/COMMIT(HEAD'S)) ?
+COMMAND: git rebase commit_address 
+
+COMMAND: git rebase destination source
+
+COMMAND: git rebase -i destination source   # IT WILL GIVE MORE CONTROL OVER WHICH COMMITS AND ORDER OF COMMITS TO REBASE.
+'''
+
+
+# PULL
+'''
+=> PULL IS THE COMBINATION OF FETCH AND MERGE. IT FETCHES ALL THE CHANGES FROM REMOTE REPO TO REMOTE BRANCHES IN OUR SYSTEM THAN MERGE THOSE CHANGES WITH THE RESPECTIVE BRANCHES SET FOR TRACKING.
+# HOW TO PULL(FETCH AND MERGE) CHANGES FROM REMOTE?
+COMMAND: git pull origin main
+COMMAND: git pull
+
+=> PULL CAN BE USED WITH REBASE TOO 
+COMMAND:- git pull --rebase
+'''
 
 # STATUS:
 
@@ -137,31 +198,7 @@ COMMAND :- git push origin source:destination
 >> origin is the default name given to the remote repo from which we cloned.
 '''
 
-# MERGE AND PULL CODE
-'''
-=> MERGE US TO CREATE A COMMIT WHICH WILL HAVE TWO UNIQUE COMMITS AS ITS PARENTS.
 
-# HOW TO MERGE CHANGES FROM ANOTHER BRANCH TO THE CURRENT BRANCH?
-
-# STEP 1: FIRST SEE THE DIFFERNCE BETWEEN TWO BRANCHES.
-COMMAND: git diff branch_to_merge
-
-# STEP 2: MERGE A BRANCH INTO THE CURRENT CHECKOUT BRANCH 
-COMMAND: git merge branch_name
-
-# HOW TO PULL(FETCH AND MERGE) CHANGES FROM REMOTE?
-COMMAND: git pull origin main
-COMMAND: git pull
-'''
-
-# GIT REBASE
-'''
-=> The second way of combining work between branches is rebasing. Rebasing essentially takes a set of commits, "copies" them, and plops them down somewhere else.
-
-# HOW TO REBASE(MOVE OUR CURRENT BRANCH/COMMIT'S(HEAD'S) WORK ONTO ANOTHER BRANCH/COMMIT(HEAD'S)) ?
-COMMAND: git rebase commit_address
-
-'''
 
 # MOVE HEAD AND BRANCH POINTER
 '''
