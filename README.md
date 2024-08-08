@@ -1,1 +1,1 @@
-# Learning GIT, DOCKER
+# Learning GIT Concept and Commands, DOCKER
