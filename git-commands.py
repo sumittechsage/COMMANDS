@@ -98,6 +98,20 @@ COMMAND :- git checkout commit_hash
         -- git fetch origin test:origin/main
         -- git fetch origin test:test
         -- git fetch origin test:origin/test
+
+        -- if we use branch_name as the source than the remote branch set for tracking that branch along with the destination.
+            git fetch origin test:main
+            than branch main and origin/test both will be updated 
+
+        -- but if we use the commit as the source than only the destination branch will be updated
+           git fecth origin commit_hash:main
+           than the main branch will be updated.
+
+        -- if we specify a non existing branch as the destination than the new branch will  be created pointing to the last fetched commit.
+            git fetch origin main:new
+            
+    ! IF WE LEAVE THE SOURCE EMPTY  THAN A NEW BRANCH WILL BE CREATED AT THE HEAD.
+        e.g  git fetch origin :new              will create a new branch at the HEAD. 
 '''
 
 # MERGE
@@ -199,6 +213,9 @@ COMMAND :- git push origin source:destination
             --> HERE destination is branch location on our remote to push
             e.g if we want to push our test branch commits onto main branch of remote assuming origin  in our remote repo name.
             git push origin test:main 
+
+            --> if we leave the souce as empty than the destination branch will be deleted from the remote
+            git push origin :test       will delete the test branch from remote and origin/test from our local.
 
 !! NOTE !!
 >> origin is the default name given to the remote repo from which we cloned.
