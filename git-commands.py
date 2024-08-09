@@ -93,6 +93,11 @@ COMMAND :- git checkout commit_hash
 # IT DOES NOT CHANGE, OR MERGE OUR CODE INTO OUR LOCAL BRANCHES. IT JUST DOWNLAOD THE CHANGES INTO REMOTE BRANCHES.
 # COMMAND :- git fetch                      # all the changes FROM every branch
 # COMMAND :- git fetch origin main          # changes FROM main branch only
+# COMMAND :- git fetch remote_name source:destination  # now, here we can actually specify the destination as any of our local or remote branch of our local repo. and the source should be the branches on rempte repo
+        -- git fetch origin test:main
+        -- git fetch origin test:origin/main
+        -- git fetch origin test:test
+        -- git fetch origin test:origin/test
 '''
 
 # MERGE
