@@ -179,6 +179,7 @@ COMMAND :- git commit -m "message"
 
 @HOW TO VIEW COMMITS INFORMATION?
 COMMAND :- git log
+COMMAND :- git log -1 --pretty=full    # to specifiy number of commits to view
 
 '''
 
