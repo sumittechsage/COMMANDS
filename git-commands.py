@@ -15,6 +15,38 @@ Global level: git config --global --list
 Local level: git config --local --list
 '''
 
+# VIEWING CREDENTIAL HELPER :-
+'''
+1. Global Configuration:    git config --global credential.helper
+2. Local Configuration:     git config credential.helper
+'''
+
+# Credential Caching and Storage Options
+'''
+** SET CREDENTIALS **
+    # OPTION 1: CACHE - TEMPORARY:- 
+        -- default cache timing = 15 Minutes
+        1.  global cache:   git config --global credential.helper cache
+        2.  local cache:    git config credential.helper cache
+    
+        -- custom cache timing : say 1 hour = 3600sec
+        1.  global cache:   git config --global credential.helper 'cache --timeout=3600'
+        2.  local cache:    git config credential.helper 'cache --timeout=3600'
+
+    # OPTION 2: STORE - PERMANANT(storing permanant is cosidered LESS SECURE):-
+        1.  global cache:   git config --global credential.helper store
+        2.  local cache:    git config credential.helper store
+    
+** REMOVE/UNSET/DELETE CREDENTIALS **
+    #  FROM CACHE:- 
+        -- git credential-cache exit
+
+** REMOVE/UNSET CREDENTIAL HELPER **
+    1. GLOBAL :     git config --global --unset credential.helper
+    2. LOCAL  :     git config --unset credential.helper
+'''
+
+
 # Global Account Config :-
 
 '''
