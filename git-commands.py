@@ -47,7 +47,7 @@ Local level: git config --local --list
 '''
 
 
-# Global Account Config :-
+# Global Account Config:-
 
 '''
 (set the account to make changes for all the changes made on the system)
