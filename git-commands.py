@@ -8,6 +8,12 @@
 COMMAND :- gh auth login
 '''
 
+# LEVELS OF CONFIGRATION :-
+'''
+System level: git config --system --list
+Global level: git config --global --list
+Local level: git config --local --list
+'''
 
 # Global Account Config :-
 
