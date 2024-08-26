@@ -34,8 +34,8 @@ Local level: git config --local --list
         2.  local cache:    git config credential.helper 'cache --timeout=3600'
 
     # OPTION 2: STORE - PERMANANT(storing permanant is cosidered LESS SECURE):-
-        1.  global cache:   git config --global credential.helper store
-        2.  local cache:    git config credential.helper store
+        1.  global store:   git config --global credential.helper store
+        2.  local store:    git config credential.helper store
     
 ** REMOVE/UNSET/DELETE CREDENTIALS **
     #  FROM CACHE:- 
