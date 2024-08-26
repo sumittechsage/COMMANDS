@@ -215,6 +215,23 @@ COMMAND :- git status
 '''
 
 
+# STASH:
+
+'''
+# WE HAVE TO STASH OUR CHANGES TO PRESERVE THEM SOMTIMES e.g WHILE DOING MERGE.
+-- Git can manage multiple stashes.
+
+COMMANDS:- 
+1. SIMPLE STASH :-                  git stash
+2. stash with  a message :-         git stash -m "work in progress"
+3. List all stashes :-              git stash list
+4. Apply latest stash :-            git stash pop
+5. Apply a specific stash :-        git stash apply stash@{2}
+5. Discard a specific stash :-      git stash drop stash@{2}
+
+'''
+
+
 # ADD & COMMIT:-
 '''
 @ How to add a single file to the staging files ?
@@ -234,6 +251,7 @@ COMMAND :- git log
 COMMAND :- git log -1 --pretty=full    # to specifiy number of commits to view
 
 '''
+
 
 # PUSH Command
 '''
